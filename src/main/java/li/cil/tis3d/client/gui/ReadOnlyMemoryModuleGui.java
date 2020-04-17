@@ -304,7 +304,11 @@ public final class ReadOnlyMemoryModuleGui extends Screen {
         GlStateManager.pushMatrix();
         GlStateManager.translatef(x, y, 0);
 
+<<<<<<< HEAD
+        minecraft.getTextureManager().bindTextureInner(Textures.LOCATION_GUI_MEMORY);
+=======
         minecraft.getTextureManager().bindTexture(Textures.LOCATION_GUI_MEMORY);
+>>>>>>> c25bf17... undo weird breakage by migrateMappings
         final int vPos = (int)(minecraft.world.getTime() % 16) * 8;
         blit(0, 0, 256 - (CELL_WIDTH + 1), vPos, 11, 8);
 

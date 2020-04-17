@@ -91,7 +91,7 @@ public final class ManualGui extends Screen {
         }
 
         scrollButton = new ImageButton(guiLeft + SCROLL_POS_X, guiTop + SCROLL_POS_Y, 26, 13, Textures.LOCATION_GUI_MANUAL_SCROLL, (button) -> {
-            
+
         }) {
             @Override
             public boolean mouseClicked(final double x, final double y, final int button) {
@@ -309,7 +309,11 @@ public final class ManualGui extends Screen {
         @Override
         public void render(final int mouseX, final int mouseY, final float partialTicks) {
             if (visible) {
+<<<<<<< HEAD
+                MinecraftClient.getInstance().getTextureManager().bindTextureInner(image);
+=======
                 MinecraftClient.getInstance().getTextureManager().bindTexture(image);
+>>>>>>> c25bf17... undo weird breakage by migrateMappings
                 GlStateManager.color4f(1, 1, 1, 1);
 
                 isHovered = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
@@ -325,8 +329,8 @@ public final class ManualGui extends Screen {
                 final double v1 = v0 + 0.5;
 
                 final Tessellator t = Tessellator.getInstance();
-                final BufferBuilder b = t.getBufferBuilder();
-                b.begin(GL11.GL_QUADS, VertexFormats.POSITION_UV);
+                final BufferBuilder b = t.getBuffer();
+                b.begin(GL11.GL_QUADS, VertexFormats.POSITION_TEXTURE);
                 b.vertex(x0, y1, blitOffset).texture(u0, v1).next();
                 b.vertex(x1, y1, blitOffset).texture(u1, v1).next();
                 b.vertex(x1, y0, blitOffset).texture(u1, v0).next();
