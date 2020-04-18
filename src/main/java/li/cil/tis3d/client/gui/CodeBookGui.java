@@ -125,11 +125,7 @@ public final class CodeBookGui extends Screen {
 
         // Background.
         GlStateManager.color4f(1, 1, 1, 1);
-<<<<<<< HEAD
-        MinecraftClient.getInstance().getTextureManager().bindTextureInner(Textures.LOCATION_GUI_BOOK_CODE_BACKGROUND);
-=======
         MinecraftClient.getInstance().getTextureManager().bindTexture(Textures.LOCATION_GUI_BOOK_CODE_BACKGROUND);
->>>>>>> c25bf17... undo weird breakage by migrateMappings
         blit(guiX, guiY, 0, 0, GUI_WIDTH, GUI_HEIGHT);
 
         // Check page change button availability.
@@ -700,11 +696,7 @@ public final class CodeBookGui extends Screen {
 
             final boolean isHovered = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
             GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-<<<<<<< HEAD
-            minecraft.getTextureManager().bindTextureInner(Textures.LOCATION_GUI_BOOK_CODE_BACKGROUND);
-=======
             minecraft.getTextureManager().bindTexture(Textures.LOCATION_GUI_BOOK_CODE_BACKGROUND);
->>>>>>> c25bf17... undo weird breakage by migrateMappings
             final int offsetX = isHovered ? BUTTON_WIDTH : 0;
             final int offsetY = type == PageChangeType.Previous ? BUTTON_HEIGHT : 0;
             blit(x, y, TEXTURE_X + offsetX, TEXTURE_Y + offsetY, BUTTON_WIDTH, BUTTON_HEIGHT);
