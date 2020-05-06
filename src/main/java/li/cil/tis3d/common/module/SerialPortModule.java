@@ -114,8 +114,7 @@ public final class SerialPortModule extends AbstractModule implements BlockChang
         final VertexConsumer vc = vcp.getBuffer(RenderLayer.getCutoutMipped());
 
         RenderUtil.drawQuad(RenderUtil.getSprite(Textures.LOCATION_OVERLAY_MODULE_SERIAL_PORT),
-                            matrices.peek(), vc, 0xF000F0, overlay);
-                            // XXX would be nice to not hardcode the light value here
+                            matrices.peek(), vc, RenderUtil.maxLight, overlay);
     }
 
     @Override

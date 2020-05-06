@@ -23,6 +23,8 @@ import org.lwjgl.opengl.GL13;
  * Utility class for rendering related operations.
  */
 public final class RenderUtil {
+    public static final int maxLight = 0xF000F0;
+
     /**
      * Bind the texture at the specified location to be used for quad rendering.
      *
