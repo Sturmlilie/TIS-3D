@@ -1,6 +1,5 @@
 package li.cil.tis3d.common.module;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import li.cil.tis3d.api.machine.Casing;
 import li.cil.tis3d.api.machine.Face;
 import li.cil.tis3d.api.machine.Pipe;
@@ -25,6 +24,8 @@ public final class ReadOnlyMemoryModule extends RandomAccessMemoryModule {
     // --------------------------------------------------------------------- //
     // Module
 
+    // XXX Initializing a ROM module from RAM appears
+    // busted since at least 1.14.4
     @Override
     public void onInstalled(final ItemStack stack) {
         super.onInstalled(stack);
@@ -57,7 +58,7 @@ public final class ReadOnlyMemoryModule extends RandomAccessMemoryModule {
 
     @Environment(EnvType.CLIENT)
     @Override
-    protected void setCellColor(final float brightness) {
-        GlStateManager.color4f(0.4f, 1, 0.4f, brightness);
+    protected int getCellColor() {
+        return 0xFF66FF66;
     }
 }
