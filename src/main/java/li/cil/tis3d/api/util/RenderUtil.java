@@ -3,6 +3,7 @@ package li.cil.tis3d.api.util;
 import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.function.Function;
 import li.cil.tis3d.client.init.Textures;
+import li.cil.tis3d.util.ColorUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -83,6 +84,33 @@ public final class RenderUtil {
         buffer.vertex(x + w, y, 0).next();
         buffer.vertex(x, y, 0).next();
         tessellator.draw();
+    }
+
+    /**
+     * Draw a full one-by-one, textureless, colored quad.
+     * Color components are in the [0, 255] range.
+     *
+     * @param matrices the model/normal matrix pair to apply
+     * @param vc a VertexConsumer accepting all standard elements.
+     * @param x the x position of the quad.
+     * @param y the y position of the quad.
+     * @param w the width of the quad.
+     * @param h the height of the quad.
+     * @param argb the color in unsigned ARGB format.
+     * @param l the light value.
+     * @param ol the overlay value.
+     */
+    @Environment(EnvType.CLIENT)
+    public static void drawColorQuad(final MatrixStack.Entry matrices, final VertexConsumer vc,
+                                     final float x, final float y, final float w, final float h,
+                                     final int argb,
+                                     final int l, final int ol) {
+        drawColorQuad(matrices, vc, x, y, w, h,
+        ColorUtils.getAlphaU8(argb),
+        ColorUtils.getRedU8(argb),
+        ColorUtils.getGreenU8(argb),
+        ColorUtils.getBlueU8(argb),
+        l, ol);
     }
 
     /**
