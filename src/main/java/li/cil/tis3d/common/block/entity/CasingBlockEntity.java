@@ -260,7 +260,7 @@ public final class CasingBlockEntity extends AbstractComputerBlockEntity impleme
 
         // Ensure there are no modules installed between two casings.
         if (hasNeighbor(face)) {
-            InventoryUtils.drop(world, getPos(), this, face.ordinal(), getInvMaxStackAmount(), Face.toDirection(face));
+            InventoryUtils.drop(world, getPos(), this, face.ordinal(), getMaxCountPerStack(), Face.toDirection(face));
         }
 
         if (neighbor instanceof ControllerBlockEntity) {
@@ -297,7 +297,7 @@ public final class CasingBlockEntity extends AbstractComputerBlockEntity impleme
     // Inventory
 
     @Override
-    public boolean canPlayerUseInv(final PlayerEntity player) {
+    public boolean canPlayerUse(final PlayerEntity player) {
         if (world.getBlockEntity(pos) != this) {
             return false;
         }
@@ -434,7 +434,7 @@ public final class CasingBlockEntity extends AbstractComputerBlockEntity impleme
      */
     @Environment(EnvType.CLIENT)
     public void setStackAndModuleClient(final int slot, final ItemStack stack, final CompoundTag moduleData) {
-        inventory.setInvStack(slot, stack);
+        inventory.setStack(slot, stack);
         final Module module = casing.getModule(Face.VALUES[slot]);
         if (module != null) {
             module.readFromNBT(moduleData);
