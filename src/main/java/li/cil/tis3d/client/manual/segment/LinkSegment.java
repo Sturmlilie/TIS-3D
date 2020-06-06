@@ -4,6 +4,7 @@ import li.cil.tis3d.api.ManualAPI;
 import li.cil.tis3d.common.api.ManualAPIImpl;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.LiteralText;
+import net.minecraft.util.Util;
 import java.net.URI;
 import java.util.Optional;
 
@@ -92,7 +93,7 @@ public final class LinkSegment extends TextSegment implements InteractiveSegment
             final Object instance = desktop.getMethod("getDesktop").invoke(null);
             desktop.getMethod("browse", URI.class).invoke(instance, new URI(url));
         } catch (final Throwable t) {
-            MinecraftClient.getInstance().player.sendSystemMessage(new LiteralText(t.toString()));
+            MinecraftClient.getInstance().player.sendSystemMessage(new LiteralText(t.toString()), Util.NIL_UUID);
         }
     }
 

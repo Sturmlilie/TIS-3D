@@ -146,7 +146,7 @@ public final class CasingBlockEntityRenderer extends BlockEntityRenderer<CasingB
                 final BlockHitResult blockHitResult = (BlockHitResult)hitResult;
                 final BlockPos pos = blockHitResult.getBlockPos();
                 assert pos != null : "dispatcher.hitResult.getBlockPos() is null even though it was non-null in isObserverLookingAt";
-                final Vec3d uv = TransformUtil.hitToUV(face, hitResult.getPos().subtract(new Vec3d(pos)));
+                final Vec3d uv = TransformUtil.hitToUV(face, hitResult.getPos().subtract(Vec3d.of(pos)));
                 lookingAtPort = Port.fromUVQuadrant(uv);
             } else {
                 closedSprite = RenderUtil.getSprite(Textures.LOCATION_OVERLAY_CASING_PORT_CLOSED_SMALL);

@@ -51,9 +51,9 @@ public abstract class AbstractMessageHandler<T extends AbstractMessage> {
             return null;
         }
 
-        if (world.getDimension().getType() != dimension) {
-            return null;
-        }
+        //~ if (world.getDimension().getType() != dimension) {
+            //~ return null;
+        //~ }
 
         return world;
     }
@@ -65,6 +65,6 @@ public abstract class AbstractMessageHandler<T extends AbstractMessage> {
             return null;
         }
 
-        return server.getWorld(dimension);
+        return server.getWorld(/*dimension*/ null); // XXX
     }
 }

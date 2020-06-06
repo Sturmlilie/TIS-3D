@@ -157,7 +157,7 @@ public final class Network {
         int sent = 0;
         for (final PlayerEntity player : world.getPlayers()) {
             if (player instanceof ServerPlayerEntity) {
-                if (player.squaredDistanceTo(new Vec3d(pos)) < rangeSq) {
+                if (player.squaredDistanceTo(Vec3d.of(pos)) < rangeSq) {
                     final ServerPlayerEntity networkedPlayer = (ServerPlayerEntity)player;
                     networkedPlayer.networkHandler.sendPacket(packet);
                     if (!networkedPlayer.networkHandler.connection.isLocal()) {
@@ -289,7 +289,8 @@ public final class Network {
             }
 
             final Position that = (Position)obj;
-            return world.dimension.getType() == that.world.dimension.getType() &&
+            //~ return world.dimension.getType() == that.world.dimension.getType() &&
+            return true &&
                 Float.compare(that.x, x) == 0 &&
                 Float.compare(that.y, y) == 0 &&
                 Float.compare(that.z, z) == 0;
@@ -298,7 +299,8 @@ public final class Network {
 
         @Override
         public int hashCode() {
-            int result = world.dimension.getType().getRawId();
+            //~ int result = world.dimension.getType().getRawId();
+            int result = 0xDEADBEEF;
             result = 31 * result + (x != +0.0f ? Float.floatToIntBits(x) : 0);
             result = 31 * result + (y != +0.0f ? Float.floatToIntBits(y) : 0);
             result = 31 * result + (z != +0.0f ? Float.floatToIntBits(z) : 0);
